@@ -23,7 +23,7 @@ function createNewFormTemplate(data, offersByType, destinations) {
       const pointName = pointDestination.name;
       return pointName;
     }
-    else {return '';}
+    return '';
   }
 
   function createDestination () {
@@ -42,11 +42,11 @@ function createNewFormTemplate(data, offersByType, destinations) {
       </div>
     </div>
   </section>`);}
-    else {return '';}
+    return '';
   }
 
   function createOffers () {
-    return pointTypeAllOffers ? (`<section class="event__section  event__section--offers">
+    return pointTypeAllOffers && pointTypeAllOffers.offers.length !== 0 ? (`<section class="event__section  event__section--offers">
     <h3 class="event__section-title  event__section-title--offers">Offers</h3>
     <div class="event__available-offers">
     ${pointTypeAllOffers.offers.map(({title, price, id}) => {

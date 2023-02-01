@@ -28,7 +28,7 @@ function createTripPointTemplate(point, offersByType, destinations) {
       }
       ).join('');
     }
-    return ('');
+    return '';
   }
 
   function createPointName () {
@@ -36,7 +36,7 @@ function createTripPointTemplate(point, offersByType, destinations) {
       const pointName = pointDestination.name;
       return pointName;
     }
-    else {return '';}
+    return '';
   }
 
   return (`<li class="trip-events__item">
