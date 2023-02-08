@@ -13,7 +13,7 @@ import { sortPointByPrice, sortPointByTime, sortPointByDate } from '../utils/dat
 import { SortType, UpdateType, UserAction, FilterType } from '../const.js';
 
 const TimeLimit = {
-  LOWER_LIMIT: 350,
+  LOWER_LIMIT: 200,
   UPPER_LIMIT: 1000,
 };
 
@@ -134,6 +134,7 @@ export default class BoardPresenter {
   };
 
   #handleModelEvent = (updateType, data) => {
+
     switch (updateType) {
       case UpdateType.PATCH:
         this.#pointPresenter.get(data.id).init(data, this.offers, this.destinations);
@@ -148,6 +149,7 @@ export default class BoardPresenter {
         break;
       case UpdateType.INIT:
         this.#isLoading = false;
+        this.#uiBlocker.unblock();
         remove(this.#loadingComponent);
         this.#renderBoard();
         break;
@@ -242,6 +244,7 @@ export default class BoardPresenter {
     render(this.#boardComponent, this.#boardContainer);
 
     if (this.#isLoading) {
+      this.#uiBlocker.block();
       this.#renderLoading();
       return;
     }

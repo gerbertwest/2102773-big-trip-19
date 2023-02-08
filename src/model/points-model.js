@@ -24,7 +24,7 @@ export default class PointsModel extends Observable {
     return this.#offers;
   }
 
-  async init() {
+  async init(newPointButtonComponent) {
     try {
       const points = await this.#pointsApiService.points;
       const offers = await this.#pointsApiService.offers;
@@ -38,6 +38,7 @@ export default class PointsModel extends Observable {
       this.#offers = [];
       this.#destinations = [];
       this._notify(UpdateType.INIT_ERROR);
+      newPointButtonComponent.element.disabled = true;
     }
     this._notify(UpdateType.INIT);
   }
