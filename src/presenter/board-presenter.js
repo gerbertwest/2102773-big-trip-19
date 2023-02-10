@@ -90,9 +90,17 @@ export default class BoardPresenter {
     this.#renderBoard();
   }
 
+  initEmptyList() {
+    const pointsCount = this.points.length;
+    if (pointsCount === 0) {
+      this.#renderEmptyList();
+    }
+  }
+
   createPoint({offers, destinations}) {
     this.#currentSortType = SortType.DAY;
     this.#filterModel.setFilter(UpdateType.MAJOR, FilterType.EVERYTHING);
+    remove(this.#emptyListComponent);
     this.#newPointPresenter.init(offers, destinations);
   }
 

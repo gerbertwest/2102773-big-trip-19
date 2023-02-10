@@ -20,5 +20,6 @@ export default class NewPointButtonView extends AbstractView {
   #clickHandler = (evt) => {
     evt.preventDefault();
     this.#handleClick();
+    this.element.blur();
   };
 }
